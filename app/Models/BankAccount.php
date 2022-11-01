@@ -13,11 +13,4 @@ class BankAccount extends Model
         'borrower_id', 'bank_account_number', 'annual_income'
     ];
 
-
-    public function borrower()
-    {
-        return $this->hasOne(Borrower::class);
-    }
-
-
 }
