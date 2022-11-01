@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('loan_applications', function (Blueprint $table) {
             $table->id();
-            $table->string('application_product')->nullable(false);
+            $table->string('application_name')->nullable(false);
             $table->timestamps();
             $table->softDeletes();
         });

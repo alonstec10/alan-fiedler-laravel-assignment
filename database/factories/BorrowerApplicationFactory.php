@@ -2,13 +2,13 @@
 
 namespace Database\Factories;
 
-use App\Models\LoanApplication;
+use App\Models\BorrowerApplication;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends Factory<LoanApplication>
+ * @extends Factory<BorrowerApplication>
  */
-class LoanApplicationFactory extends Factory
+class BorrowerApplicationFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -18,7 +18,7 @@ class LoanApplicationFactory extends Factory
     public function definition()
     {
         return [
-            'application_name' => '#123' . strtoupper(fake()->word())
+            //
         ];
     }
 }

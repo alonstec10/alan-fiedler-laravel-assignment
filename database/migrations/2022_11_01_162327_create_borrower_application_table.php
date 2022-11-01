@@ -14,9 +14,9 @@ return new class extends Migration
     public function up()
     {
         Schema::create('borrower_application', function (Blueprint $table) {
-            $table->primary(['borrower_id', 'application_id']);
-            $table->unsignedInteger('borrower_id')->nullable(false);
-            $table->unsignedInteger('application_id')->nullable(false);
+            $table->primary(['borrower_id', 'loan_applications_id']);
+            $table->foreignId('borrower_id')->constrained()->onDelete('cascade');
+            $table->foreignId('loan_applications_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }

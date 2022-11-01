@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\LoanApplication;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -14,6 +15,6 @@ class LoanApplicationSeeder extends Seeder
      */
     public function run()
     {
-        //
+        LoanApplication::factory()->create();
     }
 }

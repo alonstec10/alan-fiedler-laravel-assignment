@@ -18,6 +18,7 @@ class DatabaseSeeder extends Seeder
             BorrowerSeeder::class,
             BankAccountSeeder::class,
             LoanApplicationSeeder::class,
+            BorrowerApplication::class,
         ]);
     }
 }
