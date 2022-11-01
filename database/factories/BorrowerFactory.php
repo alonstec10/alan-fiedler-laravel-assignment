@@ -2,10 +2,11 @@
 
 namespace Database\Factories;
 
+use App\Models\Borrower;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Borrower>
+ * @extends Factory<Borrower>
  */
 class BorrowerFactory extends Factory
 {
@@ -14,10 +15,11 @@ class BorrowerFactory extends Factory
      *
      * @return array<string, mixed>
      */
-    public function definition()
+    public function definition(): array
     {
         return [
-            //
+            "name" => fake()->name(),
+            "is_employed" => 0
         ];
     }
 }
