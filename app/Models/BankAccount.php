@@ -9,4 +9,9 @@ class BankAccount extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'borrower_id', 'bank_account_number', 'annual_income'
+    ];
+
+
 }

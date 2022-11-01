@@ -15,10 +15,10 @@ class BorrowerSeeder extends Seeder
      */
     public function run()
     {
-        Borrower::create(['name' => fake()->name, 'is_employed' => 1]);
-        Borrower::create(['name' => fake()->name, 'is_employed' => 0]);
-
-
+       // Borrower::   create(['name' => fake()->name, 'is_employed' => 1]);
+       // Borrower::create(['name' => fake()->name, 'is_employed' => 0]);
+        Borrower::factory()->create( ['name' => fake()->name, 'is_employed' => 1] );
+        Borrower::factory()->create( ['name' => fake()->name, 'is_employed' => 0] );
 
     }
 }
