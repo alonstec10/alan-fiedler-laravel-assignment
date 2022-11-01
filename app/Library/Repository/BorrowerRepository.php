@@ -3,6 +3,7 @@
 namespace App\Library\Repository;
 
 use App\Models\Borrower;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class BorrowerRepository implements BorrowerRepositoryInterface
 {
@@ -10,6 +11,7 @@ class BorrowerRepository implements BorrowerRepositoryInterface
     /**
      * @param $borrowerID
      * @return array
+     * @throws ModelNotFoundException
      */
     public function getBorrower( $borrowerID ): array
     {
@@ -19,6 +21,7 @@ class BorrowerRepository implements BorrowerRepositoryInterface
     /**
      * @param $borrowerID
      * @return array
+     * @throws ModelNotFoundException
      */
     public function getBankAccount($borrowerID): array
     {
@@ -28,6 +31,7 @@ class BorrowerRepository implements BorrowerRepositoryInterface
     /**
      * @param $borrowerID
      * @return bool
+     * @throws ModelNotFoundException
      */
     public function hasBankAccount($borrowerID): bool
     {

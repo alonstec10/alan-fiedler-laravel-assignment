@@ -48,6 +48,7 @@ class BorrowerRepositoryTest extends TestCase
     {
         $borrowerRepository = new BorrowerRepository();
         $borrower = $borrowerRepository->getBorrower(1);
+        $this->assertIsArray($borrower);
         $this->assertArrayHasKey('id', $borrower);
         $this->assertArrayHasKey('name', $borrower);
         $this->assertArrayHasKey('is_employed', $borrower);
@@ -57,7 +58,7 @@ class BorrowerRepositoryTest extends TestCase
      * @test
      * @return void
      */
-    public function it_does_not_have_bank_account()
+    public function it_does_not_have_bank_account(): void
     {
         $borrowerID = 2;
         $borrowerRepository = new BorrowerRepository();
