@@ -1,66 +1,87 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+<p align="center"><a href="https://www.guildmortgage.com/" target="_blank"><img src="https://www.guildmortgage.com/wp-content/uploads/2016/11/Guild_Logo_RGB_Full.png" width="25%"></a></p>
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+# Developer test for Guild / Laravel
 
-## About Laravel
+## Given
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+- You have a loan application
+  - The loan application has 2 borrowers
+    - One borrower has a job
+    - The other borrower has a job and a bank account
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Requirements
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+- Fork this git repository and create a feature branch for your changes
+- Install a fresh copy of Laravel
+- Create some simple database tables to represent the above scenario
+  - By simple I mean just the basics of what's really needed for this exercise
+  - For example, the borrower should have a name, but we don't need date of birth, social security number or contact information for this exercise
+  - Though I would like to see the standard date fields as part of the design (ie. created, updated, deleted)
+- Write a query (or queries) that shows the total annual income and bank account values for the application
+- Expose an API end point to show the results of the query (or queries)
+  - All output should be in JSON format
+- Write a unit test on at least one method in the project
+  - I'm deliberatly keeping this requirement vague to give you freedom to decide what to test and how
+- Update this README file with any installation instructions needed so we can clone and run your code
+- Create a Github Pull Request against this repo with your changes
 
-## Learning Laravel
+## What we're looking for
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+- Your general skill-set with PHP and MySQL
+- Your general architecture skills
+- How well you know your way around Laravel
+- Your ability to write unit tests
+- Coding style
+- How well you adhere to the PSR standards
+- Usage of design patterns in your code
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+## Installation instructions
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
 
-## Laravel Sponsors
+### Steps:
+    
+Install dependancies
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+    $ cd $PROJECT_ROOT && composer install
+    
+Make sure to run sail
+(Sail will run php and mysql. ALl env creds are default so this should copy
+example file to .env)
 
-### Premium Partners
+    
+    $ ./vendor/bin/sail
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+*Note: sail should also create laravel database and testing database*
+** Note: Please make sure 80 and 3306 ports are open **
 
-## Contributing
+Make sure to run your migration files
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+Lets run our migrations from the image itself
 
-## Code of Conduct
+    $ docker ps | grep mysql
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+We should see a docker image file there, please go inside it
 
-## Security Vulnerabilities
+    $ docker exec -it alan-fiedler-assignment-laravel.test-1 bash
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+You should be in a be in /var/www/, or working directory
+Run migrations with seeders!
+    
+    $ php artisan migrate:refresh --seed
+    
+Once you have seeded and migrated, you can run phpunit to test out the application!
+(Please make sure you are in the image, denv configuration is in the sail network. 
+Please reach out for any questions)
+    
+    $ ./vendor/bin/phpunit
 
-## License
+If you want to see a response in the browser, please make sure to go to:
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+    $ http://localhost/api/application/1
+
+The seeders have only one application.
+
+
+
+
+
