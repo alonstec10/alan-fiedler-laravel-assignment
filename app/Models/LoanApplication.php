@@ -12,4 +12,10 @@ class LoanApplication extends Model
     protected $fillable = [
         'application_name'
     ];
+
+
+    public function borrowers()
+    {
+        return $this->belongsToMany(Borrower::class);
+    }
 }

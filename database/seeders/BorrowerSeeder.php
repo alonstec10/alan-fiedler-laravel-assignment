@@ -13,12 +13,9 @@ class BorrowerSeeder extends Seeder
      *
      * @return void
      */
-    public function run()
+    public function run(): void
     {
-       // Borrower::   create(['name' => fake()->name, 'is_employed' => 1]);
-       // Borrower::create(['name' => fake()->name, 'is_employed' => 0]);
         Borrower::factory()->create( ['name' => fake()->name, 'is_employed' => 1] );
         Borrower::factory()->create( ['name' => fake()->name, 'is_employed' => 0] );
-
     }
 }

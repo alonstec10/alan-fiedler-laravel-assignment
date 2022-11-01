@@ -14,4 +14,10 @@ class BankAccount extends Model
     ];
 
 
+    public function borrower()
+    {
+        return $this->hasOne(Borrower::class);
+    }
+
+
 }

@@ -24,7 +24,7 @@ class BorrowerApplication extends Seeder
         foreach( $borrowers as $borrower ) {
             BorrowerApplicationModel::factory()->create([
                 'borrower_id' => $borrower->id,
-                'loan_applications_id' => $application->id
+                'loan_application_id' => $application->id
             ]);
         }
 

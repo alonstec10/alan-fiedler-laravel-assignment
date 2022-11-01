@@ -16,14 +16,13 @@ class BankAccountSeeder extends Seeder
      */
     public function run()
     {
-        $borrowers = Borrower::make()->get();
+        $borrower = Borrower::make()->first();
 
-        foreach($borrowers as $borrower) {
-            BankAccount::factory()->create([
-                'borrower_id' => $borrower->id,
-                'bank_account_number' => fake()->iban(),
-                'annual_income' => fake()->randomNumber(6),
-            ]);
-        }
+        BankAccount::factory()->create([
+            'borrower_id' => $borrower->id,
+            'bank_account_number' => fake()->iban(),
+            'annual_income' => fake()->randomNumber(6),
+        ]);
+
     }
 }

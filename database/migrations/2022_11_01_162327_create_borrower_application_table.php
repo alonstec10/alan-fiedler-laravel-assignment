@@ -13,10 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('borrower_application', function (Blueprint $table) {
-            $table->primary(['borrower_id', 'loan_applications_id']);
+        Schema::create('borrower_loan_application', function (Blueprint $table) {
+            $table->primary(['borrower_id', 'loan_application_id'], 'borrower_application_id');
             $table->foreignId('borrower_id')->constrained()->onDelete('cascade');
-            $table->foreignId('loan_applications_id')->constrained()->onDelete('cascade');
+            $table->foreignId('loan_application_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -28,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('borrower_application');
+        Schema::dropIfExists('borrower_loan_application');
     }
 };

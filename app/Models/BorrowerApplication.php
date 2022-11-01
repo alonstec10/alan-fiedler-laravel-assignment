@@ -9,5 +9,5 @@ class BorrowerApplication extends Model
 {
     use HasFactory;
 
-    protected $table = 'borrower_application';
+    protected $table = 'borrower_loan_application';
 }
