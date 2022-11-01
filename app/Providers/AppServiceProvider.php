@@ -2,6 +2,10 @@
 
 namespace App\Providers;
 
+use App\Library\Repository\BorrowerRepository;
+use App\Library\Repository\BorrowerRepositoryInterface;
+use App\Library\Repository\LoanApplicationRepository;
+use App\Library\Repository\LoanApplicationRepositoryInterface;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -11,9 +15,16 @@ class AppServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function register()
+    public function register(): void
     {
-        //
+
+        $this->app->singleton(LoanApplicationRepositoryInterface::class, function(){
+            return new LoanApplicationRepository();
+        });
+
+        $this->app->singleton(BorrowerRepositoryInterface::class, function(){
+            return new BorrowerRepository();
+        });
     }
 
     /**
